@@ -12,7 +12,7 @@ import store from './store';
 
 import './index.scss';
 
-const restoService = new RestoService;
+const restoService = new RestoService();
 
 ReactDOM.render(
     <Provider store={store}>
