@@ -1,6 +1,5 @@
 import React from 'react';
 import './cart-table.scss';
-import { Link } from 'react-router-dom';
 
 const CartTable = () => {
     return (
