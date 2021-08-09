@@ -1,7 +1,14 @@
 const initialState = {
     menu: [],
     loading: true,
-    error: false
+    error: false,
+    items: [		{
+        "title": "Cesar salad",
+        "price": 12,
+        "url": "https://static.1000.menu/img/content/21458/-salat-cezar-s-kr-salat-cezar-s-krevetkami-s-maionezom_1501173720_1_max.jpg",
+        "category": "salads",
+        "id": 1
+    }]
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,20 +16,18 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'MENU_LOADED':
             return {
+                ...state,
                 menu: action.payload,
-                loading: false,
-                error: false
+                loading: false
             }    
         case 'MENU_REQUESTED':
             return {
-                menu: state.menu,
-                loading: true,
-                error: false
+                ...state,
+                loading: true
             }
         case 'MENU_ERROR':
             return {
-                menu: state.menu,
-                loading: true,
+                ...state,
                 error: true
             }    
         default:
