@@ -2,17 +2,10 @@ const initialState = {
     menu: [],
     loading: true,
     error: false,
-    items: [		{
-        "title": "Cesar salad",
-        "price": 12,
-        "url": "https://static.1000.menu/img/content/21458/-salat-cezar-s-kr-salat-cezar-s-krevetkami-s-maionezom_1501173720_1_max.jpg",
-        "category": "salads",
-        "id": 1
-    }]
+    items: []
 }
 
 const reducer = (state = initialState, action) => {
-    console.log(state);
     switch (action.type) {
         case 'MENU_LOADED':
             return {
@@ -29,6 +22,19 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: true
+            }    
+        case 'ITEM_ADD_TO_CART':
+            const id = action.payload;
+            const item = state.menu.find(item => item.id === id);
+            const newItem = {
+                title: item.title,
+                price: item.price,
+                url: item.url,
+                id: item.id
+            };
+            return {
+                ...state,
+                items: [newItem]
             }    
         default:
             return state;
